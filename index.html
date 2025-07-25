@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Internships & Career Opportunities Club</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts - Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
@@ -19,39 +16,39 @@
             overflow-x: hidden; /* Prevent horizontal scrolling */
         }
         section {
-            padding: 4rem 1rem; /* py-16 px-4 */
+            padding: 2.5rem 1rem; /* Adjusted for smaller screens */
             max-width: 1200px;
             margin: 0 auto;
         }
         .hero-section {
             background: linear-gradient(135deg, #1E3A8A 0%, #4F46E5 100%); /* Dark Blue to Indigo gradient */
-            min-height: 100vh;
+            min-height: 80vh; /* Slightly reduced for mobile */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem; /* Adjusted padding */
             position: relative;
             overflow: hidden;
-            border-bottom-left-radius: 50px;
-            border-bottom-right-radius: 50px;
+            border-bottom-left-radius: 30px; /* Slightly smaller radius */
+            border-bottom-right-radius: 30px;
         }
         .hero-content {
             z-index: 10;
             position: relative;
         }
         .hero-headline {
-            font-size: 3.5rem; /* text-6xl */
+            font-size: 2.5rem; /* Smaller for mobile */
             font-weight: 800; /* font-extrabold */
             color: #F8FAFC; /* White */
-            line-height: 1.1;
-            margin-bottom: 1rem;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            line-height: 1.2; /* Adjusted line height */
+            margin-bottom: 0.75rem; /* Reduced margin */
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Slightly softer shadow */
         }
         .hero-subheading {
-            font-size: 1.5rem; /* text-2xl */
+            font-size: 1.125rem; /* Smaller for mobile */
             color: #CBD5E1; /* Slate 300 */
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem; /* Reduced margin */
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
@@ -59,36 +56,36 @@
         .cta-button {
             background-color: #FACC15; /* Amber 400 */
             color: #1F2937; /* Dark Gray */
-            padding: 1.25rem 3rem;
+            padding: 1rem 2.5rem; /* Adjusted padding */
             border-radius: 50px;
-            font-size: 1.25rem;
+            font-size: 1.1rem; /* Slightly smaller font */
             font-weight: 700;
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 10px 20px rgba(250, 204, 21, 0.4);
+            box-shadow: 0 8px 15px rgba(250, 204, 21, 0.4); /* Softer shadow */
             display: inline-block;
             text-decoration: none;
         }
         .cta-button:hover {
             background-color: #FDE047; /* Amber 300 */
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 25px rgba(250, 204, 21, 0.6);
+            transform: translateY(-3px) scale(1.01); /* Less dramatic hover effect */
+            box-shadow: 0 10px 20px rgba(250, 204, 21, 0.6);
         }
 
         /* Stream Cards Section */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Smaller minmax for mobile cards */
+            gap: 1rem; /* Reduced gap */
         }
         .stream-card {
             background-color: #1E293B; /* Darker Slate */
-            border-radius: 16px;
-            padding: 2rem;
+            border-radius: 12px; /* Smaller radius */
+            padding: 1.5rem; /* Reduced padding */
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.25rem; /* Smaller font */
             font-weight: 600;
             color: #93C5FD; /* Light Blue */
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Softer shadow */
             transition: all 0.3s ease-in-out;
             cursor: pointer;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -96,17 +93,17 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 150px;
+            min-height: 120px; /* Reduced min-height */
         }
         .stream-card:hover {
             background-color: #334155; /* Even Darker Slate */
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px) scale(1.02); /* Less dramatic hover */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
             color: #BFDBFE; /* Lighter Blue */
         }
         .stream-card i {
-            font-size: 2.5rem; /* Icon size */
-            margin-bottom: 0.75rem;
+            font-size: 2rem; /* Icon size */
+            margin-bottom: 0.5rem; /* Reduced margin */
             color: #60A5FA; /* Blue 400 */
         }
 
@@ -115,35 +112,35 @@
             display: flex;
             align-items: center;
             background-color: #1E293B;
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            border-radius: 10px; /* Smaller radius */
+            padding: 1rem; /* Reduced padding */
+            margin-bottom: 0.75rem; /* Reduced margin */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             transition: transform 0.2s ease-in-out;
         }
         .discover-item:hover {
-            transform: translateX(5px);
+            transform: translateX(3px); /* Less dramatic hover */
         }
         .discover-item i {
-            font-size: 2rem;
+            font-size: 1.75rem; /* Smaller icon size */
             color: #FACC15; /* Amber 400 */
-            margin-right: 1rem;
-            min-width: 2rem; /* Ensure consistent spacing */
+            margin-right: 0.75rem; /* Reduced margin */
+            min-width: 1.75rem; /* Ensure consistent spacing */
         }
         .discover-item p {
-            font-size: 1.125rem; /* text-lg */
+            font-size: 1rem; /* Smaller text */
             color: #CBD5E1;
         }
 
         /* Join Us Section */
         .join-us-container {
             background-color: #1E293B;
-            border-radius: 20px;
-            padding: 2.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 16px; /* Smaller radius */
+            padding: 2rem; /* Adjusted padding */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             display: flex;
-            flex-direction: column;
-            gap: 2rem;
+            flex-direction: column; /* Force column layout on mobile */
+            gap: 1.5rem; /* Reduced gap */
         }
         .join-us-qr {
             flex: 1;
@@ -154,32 +151,34 @@
             text-align: center;
         }
         .join-us-qr img {
-            width: 200px;
-            height: 300px;
-            border-radius: 8px;
+            width: 180px; /* Slightly smaller QR image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 6px; /* Smaller radius */
             margin-bottom: 1rem;
-            border: 4px solid #FACC15;
-            box-shadow: 0 5px 20px rgba(250, 204, 21, 0.3);
+            border: 3px solid #FACC15; /* Thinner border */
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
         }
         .social-link {
             display: inline-flex;
             align-items: center;
-            padding: 0.75rem 1.5rem;
+            padding: 0.6rem 1.2rem; /* Smaller padding */
             background-color: #4F46E5; /* Indigo 600 */
             color: #F8FAFC;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease-in-out;
-            margin: 0.5rem;
+            margin: 0.4rem; /* Reduced margin */
+            font-size: 0.9rem; /* Smaller font size */
         }
         .social-link:hover {
             background-color: #6366F1; /* Indigo 500 */
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         .social-link i {
-            margin-right: 0.75rem;
+            margin-right: 0.6rem; /* Reduced margin */
+            font-size: 1.1rem; /* Adjusted icon size */
         }
 
         .join-us-form {
@@ -187,13 +186,13 @@
         }
         .join-us-form input, .join-us-form select {
             width: 100%;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 8px;
+            padding: 0.8rem; /* Reduced padding for inputs */
+            margin-bottom: 0.8rem; /* Reduced margin */
+            border-radius: 6px; /* Smaller radius */
             border: 1px solid #475569; /* Slate 700 */
             background-color: #0F172A; /* Dark Slate Blue */
             color: #F8FAFC;
-            font-size: 1rem;
+            font-size: 0.95rem; /* Slightly smaller font */
         }
         .join-us-form input::placeholder {
             color: #94A3B8; /* Slate 400 */
@@ -202,47 +201,121 @@
             width: 100%;
             background-color: #FACC15; /* Amber 400 */
             color: #1F2937;
-            padding: 1rem;
-            border-radius: 8px;
-            font-size: 1.125rem;
+            padding: 0.9rem; /* Reduced padding */
+            border-radius: 6px; /* Smaller radius */
+            font-size: 1rem; /* Slightly smaller font */
             font-weight: 700;
             transition: all 0.3s ease-in-out;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
         .join-us-form button:hover {
             background-color: #FDE047; /* Amber 300 */
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
         }
 
         /* Footer */
         .footer-section {
             background-color: #1E293B;
             text-align: center;
-            padding: 2.5rem 1rem;
-            border-top-left-radius: 50px;
-            border-top-right-radius: 50px;
-            font-size: 1.25rem;
+            padding: 2rem 1rem; /* Adjusted padding */
+            border-top-left-radius: 30px; /* Smaller radius */
+            border-top-right-radius: 30px;
+            font-size: 1rem; /* Smaller font */
             color: #94A3B8;
         }
+        .footer-section p.mt-2 {
+            font-size: 0.75rem; /* Even smaller copyright text */
+        }
 
-        /* Responsive adjustments */
+        /* Responsive adjustments for larger screens (using min-width) */
         @media (min-width: 768px) {
+            section {
+                padding: 4rem 1rem; /* Revert to larger padding on desktop */
+            }
+            .hero-section {
+                min-height: 100vh; /* Revert to full height on desktop */
+                border-bottom-left-radius: 50px;
+                border-bottom-right-radius: 50px;
+            }
             .hero-headline {
                 font-size: 5rem; /* text-7xl */
+                line-height: 1.1;
+                margin-bottom: 1rem;
             }
             .hero-subheading {
                 font-size: 1.75rem; /* text-3xl */
+                margin-bottom: 2.5rem;
+            }
+            .cta-button {
+                padding: 1.25rem 3rem;
+                font-size: 1.25rem;
+            }
+            .stream-card {
+                padding: 2rem;
+                font-size: 1.5rem;
+                min-height: 150px;
             }
             .card-grid {
-                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Original desktop minmax */
+                gap: 1.5rem;
+            }
+            .stream-card i {
+                font-size: 2.5rem;
+                margin-bottom: 0.75rem;
+            }
+            .discover-item {
+                padding: 1.25rem;
+                margin-bottom: 1rem;
+            }
+            .discover-item i {
+                font-size: 2rem;
+                margin-right: 1rem;
+                min-width: 2rem;
+            }
+            .discover-item p {
+                font-size: 1.125rem;
             }
             .join-us-container {
-                flex-direction: row;
+                flex-direction: row; /* Desktop: row layout */
                 gap: 4rem;
+                padding: 2.5rem;
+                border-radius: 20px;
             }
-            .join-us-qr, .join-us-form {
-                flex: 1;
+            .join-us-qr img {
+                width: 200px; /* Revert QR image size */
+                height: 300px;
+                border-radius: 8px;
+                border: 4px solid #FACC15;
+            }
+            .social-link {
+                padding: 0.75rem 1.5rem;
+                margin: 0.5rem;
+                font-size: 1rem;
+            }
+            .social-link i {
+                margin-right: 0.75rem;
+                font-size: 1.25rem;
+            }
+            .join-us-form input, .join-us-form select {
+                padding: 1rem;
+                margin-bottom: 1rem;
+                border-radius: 8px;
+                font-size: 1rem;
+            }
+            .join-us-form button {
+                padding: 1rem;
+                border-radius: 8px;
+                font-size: 1.125rem;
+            }
+            .footer-section {
+                padding: 2.5rem 1rem;
+                border-top-left-radius: 50px;
+                border-top-right-radius: 50px;
+                font-size: 1.25rem;
+            }
+            .footer-section p.mt-2 {
+                font-size: 0.875rem;
             }
         }
         @media (min-width: 1024px) {
@@ -256,7 +329,6 @@
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
             <h1 class="hero-headline">
@@ -269,7 +341,6 @@
         </div>
     </section>
 
-    <!-- Choose Your Stream & Get Your Roadmap Section -->
     <section id="roadmaps" class="py-16 px-4 text-center">
         <h2 class="text-4xl font-bold mb-12 text-indigo-300">Choose Your Stream & Get Your Roadmap</h2>
         <div class="card-grid">
@@ -291,7 +362,6 @@
         </div>
     </section>
 
-    <!-- What You'll Discover at Our Stall Section -->
     <section id="discover" class="py-16 px-4">
         <h2 class="text-4xl font-bold mb-12 text-center text-indigo-300">What You'll Discover at Our Stall</h2>
         <div class="grid md:grid-cols-2 gap-6">
@@ -318,15 +388,13 @@
         </div>
     </section>
 
-    <!-- Join Us Section -->
     <section id="join-us" class="py-16 px-4">
         <h2 class="text-4xl font-bold mb-6 text-center text-indigo-300">Join Our Community!</h2>
         <p class="font-bold mb-6 text-center text-indigo-300">Unlock your potential. Connect, learn, and grow with us!</p>
 
         <div class="join-us-container">
             <div class="join-us-qr">
-                <img src="damp.jpeg" alt="Description of the image">
-
+                <img src="damp.jpeg" alt="QR Code for Joining Community">
                 <div class="flex flex-wrap justify-center mt-4">
                     <a href="https://chat.whatsapp.com/D6iPCqooI10EI0fv4xEcsN" target="_blank" class="social-link">
                         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -359,7 +427,6 @@
         </div>
     </section>
 
-    <!-- Footer/Closing Section -->
     <footer class="footer-section">
         <p>Still Confused? Visit Our Stall at Udhaan — We'll Guide You!</p>
         <p class="mt-2 text-sm text-slate-500">&copy; 2025 Internships & Career Opportunities Club. All rights reserved.</p>
