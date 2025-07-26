@@ -477,56 +477,85 @@
 
         
         const signupForm = document.getElementById('signup-form');
-        const formMessage = document.getElementById('form-message');
+const formMessage = document.getElementById('form-message');
 
-        // PASTE YOUR DEPLOYED WEB APP URL HERE
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoHLsT7HxUav0HmkcVngEpycsinHibiUCTWsc2xez6ikS_doBiOazv8GuzpiOCCD29tQ/exec';
+// PASTE YOUR DEPLOYED WEB APP URL HERE
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxoHLsT7HxUav0HmkcVngEpycsinHibiUCTWsc2xez6ikS_doBiOazv8GuzpiOCCD29tQ/exec';
 
-        signupForm.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent default form submission
+signupForm.addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent default form submission
 
-            formMessage.classList.add('hidden'); // Hide any previous messages
-            formMessage.classList.remove('text-red-400', 'text-emerald-400'); // Reset colors
+    formMessage.classList.add('hidden'); // Hide any previous messages
+    formMessage.classList.remove('text-red-400', 'text-emerald-400'); // Reset colors
 
-            const submitButton = this.querySelector('button[type="submit"]');
-            submitButton.disabled = true; // Disable button during submission
-            submitButton.textContent = 'Submitting...';
+    const submitButton = this.querySelector('button[type="submit"]');
+    submitButton.disabled = true; // Disable button during submission
+    submitButton.textContent = 'Submitting...';
 
-            const formData = new FormData(this);
+    const formData = new FormData(this);
 
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    body: formData,
-                    redirect: 'follow' // Important for Apps Script deployments
-                });
+    // --- Input Validation ---
+    const email = formData.get('email'); // Assuming your email input has name="email"
+    const phone = formData.get('phone'); // Assuming your phone input has name="phone"
 
-                const result = await response.json();
+    // Basic email format validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email && !emailRegex.test(email)) {
+        formMessage.textContent = 'Please enter a valid email address.';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('text-red-400');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Add Me to List';
+        return; // Stop execution if validation fails
+    }
 
-                if (result.result === 'success') {
-                    formMessage.textContent = 'Thanks for showing interest! We\'ll be in touch!';
-                    formMessage.classList.remove('hidden');
-                    formMessage.classList.add('text-emerald-400');
-                    signupForm.reset(); // Clear the form on success
-                } else {
-                    console.error('Submission error:', result.error);
-                    formMessage.textContent = 'Oops! Something went wrong. Please try again.';
-                    formMessage.classList.remove('hidden');
-                    formMessage.classList.add('text-red-400');
-                }
-            } catch (error) {
-                console.error('Network or fetch error:', error);
-                formMessage.textContent = 'Network error. Please check your connection or try again later.';
-                formMessage.classList.remove('hidden');
-                formMessage.classList.add('text-red-400');
-            } finally {
-                submitButton.disabled = false; // Re-enable button
-                submitButton.textContent = 'Add Me to List';
-                setTimeout(() => {
-                    formMessage.classList.add('hidden'); // Hide message after a few seconds
-                }, 5000);
-            }
+    // Basic phone number validation (e.g., 10 digits, can be adjusted)
+    // This regex allows for optional country code, spaces, hyphens, and parentheses.
+    // For a stricter 10-digit check without country code: /^\d{10}$/
+    const phoneRegex = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
+    if (phone && !phoneRegex.test(phone)) {
+        formMessage.textContent = 'Please enter a valid phone number (e.g., +1-555-555-5555 or 555-555-5555).';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('text-red-400');
+        submitButton.disabled = false;
+        submitButton.textContent = 'Add Me to List';
+        return; // Stop execution if validation fails
+    }
+    // --- End Input Validation ---
+
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            body: formData,
+            redirect: 'follow' // Important for Apps Script deployments
         });
+
+        const result = await response.json();
+
+        if (result.result === 'success') {
+            formMessage.textContent = 'Thanks for showing interest! We\'ll be in touch!';
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('text-emerald-400');
+            signupForm.reset(); // Clear the form on success
+        } else {
+            console.error('Submission error:', result.error);
+            formMessage.textContent = 'Oops! Something went wrong. Please try again.';
+            formMessage.classList.remove('hidden');
+            formMessage.classList.add('text-red-400');
+        }
+    } catch (error) {
+        console.error('Network or fetch error:', error);
+        formMessage.textContent = 'Network error. Please check your connection or try again later.';
+        formMessage.classList.remove('hidden');
+        formMessage.classList.add('text-red-400');
+    } finally {
+        submitButton.disabled = false; // Re-enable button
+        submitButton.textContent = 'Add Me to List';
+        setTimeout(() => {
+            formMessage.classList.add('hidden'); // Hide message after a few seconds
+        }, 5000);
+    }
+});
     </script>
 </body>
 </html>
